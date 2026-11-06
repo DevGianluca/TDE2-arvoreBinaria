@@ -16,7 +16,7 @@ public class Main {
         }
         tree.printTree();
 
-        System.out.println("Digite a sua palavra em morse para ser traduzida: ");
+        System.out.println("Digite o codigo em Morse (use '.' e '-' separados por espaco):");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
@@ -34,7 +34,13 @@ public class Main {
             }
         }
 
-        System.out.println(tree.decode(input));
+        String resultado = tree.decode(input);
+        if (resultado.isEmpty()) {
+            System.out.println("\nNenhum codigo Morse valido foi reconhecido.");
+            System.out.println("Dica: digite pontos '.' e tracos '-' separados por espaco (ex: ... --- ...)");
+        } else {
+            System.out.println("\nMensagem decodificada: " + resultado);
+        }
         scanner.close();
     }
 }
